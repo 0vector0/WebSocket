@@ -1,6 +1,7 @@
 package com.mikhalechko.websockets;
 
 
+import javax.servlet.http.HttpSession;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
@@ -11,6 +12,7 @@ public class WebSocketServer {
     @OnOpen
     public void onOpen(Session session, EndpointConfig config) throws IOException {
         session.getBasicRemote().sendText("connected");
+        HttpSession httpSession = (HttpSession) config.getUserProperties().get(HttpSession.class.getName());
     }
 
     @OnClose
