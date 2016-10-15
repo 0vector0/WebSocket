@@ -5,7 +5,7 @@
     <script type="text/javascript">
         var socket = new WebSocket("ws://localhost:8080/app");
         socket.onopen = function () {
-            alert('connected');
+            alert("connected");
         };
         socket.onclose = function (event) {
             if (event.wasClean) {
@@ -16,13 +16,13 @@
         };
         socket.onmessage = function (event) {
             var message = event.data;
-            var text = document.getElementById('output').value();
+            var text = document.getElementById("output").value;
             text += "\n" + message;
-            document.getElementById('output').value = text;
+            document.getElementById("output").value = text;
         };
 
         function send() {
-            var input = document.getElementById('input');
+            var input = document.getElementById('input').value;
             socket.send(input);
         }
 
@@ -31,9 +31,9 @@
 <body>
 <h2>WebSocket</h2>
 <form>
-    <textarea id='output'></textarea>
+    <textarea id="output"></textarea>
     <input type="text" id="input"/>
-    <button onclick="send()" name="send"/>
+    <input type="button" onclick="send()" name="Send" value="Send"/>
 </form>
 </body>
 </html>
